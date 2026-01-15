@@ -4,16 +4,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-
-
-        //Register page
         System.out.println("::::REGISTER::::");
         System.out.print("Enter number of accounts to register: ");
         int numOfAcc =  scan.nextInt();
         scan.nextLine();
 
-
-        /* Stores the user credentials */
         String[] username = new String[numOfAcc];
         String[] password = new String[numOfAcc];
 
@@ -64,7 +59,5 @@ public class Main {
                 System.out.println("Invalid username or password. Attempts: " + attempts);
             }
         }
-
-
     }
 }
