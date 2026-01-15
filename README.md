@@ -1,1 +1,1 @@
-A simple login system in Java. Good for learning.
+A simple login system in Java. Good for beginners.
