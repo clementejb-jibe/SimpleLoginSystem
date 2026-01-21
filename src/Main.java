@@ -6,20 +6,20 @@ public class Main {
 
         System.out.println("::::REGISTER::::");
         System.out.print("Enter number of accounts to register: ");
-        int numOfAcc =  scan.nextInt();
+        int accountCount =  scan.nextInt();
         scan.nextLine();
 
-        String[] username = new String[numOfAcc];
-        String[] password = new String[numOfAcc];
+        String[] usernames = new String[accountCount];
+        String[] passwords = new String[accountCount];
 
-        for (int i = 0; i < numOfAcc; i++) {
-            System.out.printf("Account %d\n", i);
+        for (int accountIndex = 0; accountIndex < accountCount; accountIndex++) {
+            System.out.printf("Account %d\n", accountIndex);
 
             System.out.print("Enter username: ");
-            username[i] = scan.nextLine();
+            usernames[accountIndex] = scan.nextLine();
 
             System.out.print("Enter password: ");
-            password[i] = scan.nextLine();
+            passwords[accountIndex] = scan.nextLine();
         }
 
         System.out.println("""
@@ -27,36 +27,39 @@ public class Main {
                 
                 USERNAME        PASSWORD""");
 
-        for (int i = 0; i < numOfAcc; i++) {
-            System.out.printf("%-15s %-15s\n", username[i], password[i]);
+        for (int accountIndex = 0; accountIndex < accountCount; accountIndex++) {
+            System.out.printf("%-15s %-15s\n", usernames[accountIndex], passwords[accountIndex]);
         }
 
 
-        boolean isLoginSuccess = false;
-        int attempts = 3;
-        boolean isMatch = false;
+        boolean isLoginSuccessful = false;
+        int REMAINING_ATTEMPTS = 3; // Constant Attempt value
 
         System.out.println("::::LOGIN::::");
 
-        while(attempts > 0 &&  !isLoginSuccess) {
+        while(REMAINING_ATTEMPTS > 0 &&  !isLoginSuccessful) {
             System.out.print("Username: ");
             String enteredUsername = scan.nextLine();
 
             System.out.print("Password: ");
             String enteredPassword = scan.nextLine();
 
-            for(int i = 0; i < numOfAcc; i++) {
-                if (enteredUsername.equals(username[i]) &&  enteredPassword.equals(password[i])) {
-                    isMatch = true;
-                    isLoginSuccess = true;
+            boolean credentialsMatch = false; //Define if username and password are match together.
+
+            for(int accountIndex = 0; accountIndex < accountCount; accountIndex++) {
+                if (enteredUsername.equals(usernames[accountIndex]) &&
+                        enteredPassword.equals(passwords[accountIndex])) {
+
+                    credentialsMatch = true;
+                    isLoginSuccessful = true;
                     System.out.println("Login successful.");
                     break;
                 }
             }
 
-            if (!isMatch) {
-                attempts--;
-                System.out.println("Invalid username or password. Attempts: " + attempts);
+            if (!credentialsMatch) {
+                REMAINING_ATTEMPTS--;
+                System.out.println("Invalid username or password. Attempts: " + REMAINING_ATTEMPTS);
             }
         }
     }
