@@ -5,7 +5,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("::::REGISTER::::");
-        System.out.print("Enter number of accounts to register: ");
+        System.out.print("Enter number of account to register: ");
         int accountCount =  scan.nextInt();
         scan.nextLine();
 
@@ -13,7 +13,7 @@ public class Main {
         String[] passwords = new String[accountCount];
 
         for (int accountIndex = 0; accountIndex < accountCount; accountIndex++) {
-            System.out.printf("Account %d\n", accountIndex);
+            System.out.printf("Account %d\n", accountIndex + 1);
 
             System.out.print("Enter username: ");
             usernames[accountIndex] = scan.nextLine();
@@ -28,7 +28,7 @@ public class Main {
                 USERNAME        PASSWORD""");
 
         for (int accountIndex = 0; accountIndex < accountCount; accountIndex++) {
-            System.out.printf("%-15s %-15s\n", usernames[accountIndex], passwords[accountIndex]);
+            System.out.printf("[%d] %-11s %-11s\n",(accountIndex + 1), usernames[accountIndex], passwords[accountIndex]);
         }
 
 
